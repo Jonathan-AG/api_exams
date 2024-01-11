@@ -40,7 +40,7 @@ const activeSessionsSocket = (io, dbConnection) => {
             socket.emit("cerrarExamen", true);
         }
 
-        socket.emit("activeExams", users[user.id_moodle].activeExams);
+        socket.to(room).emit("activeExams", users[user.id_moodle].activeExams);
 
         socket.on('disconnect', async () => {
             const timeToDisconnection = moment().tz('America/Mazatlan').format("YYYY/MM/DD HH:mm:ss");
