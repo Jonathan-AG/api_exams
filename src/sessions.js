@@ -68,7 +68,7 @@ const activeSessionsSocket = (io, dbConnection) => {
 
             if (room && rooms.has(sessionID)) {
                 if (user.tipo == 2) {
-                    socket.to(room).emit('reloadExam', user.tipo);
+                    socket.to(room).emit('reloadExam', {tipo: user.tipo, validAttempt: user.validAttempt});
                 }
 
                 /* try {
